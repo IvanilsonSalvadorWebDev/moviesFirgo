@@ -1,0 +1,154 @@
+/* Container que ocupa toda a tela dentro do main */
+.det-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-family: sans-serif;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* Imagem de fundo gigante */
+.det-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    filter: blur(8px) brightness(0.4); /* Desfoca e escurece a imagem de fundo */
+    transform: scale(1.05); /* Evita bordas brancas causadas pelo blur */
+    z-index: 1;
+}
+
+/* Camada escura extra para garantir leitura do texto */
+.det-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.4) 100%);
+    z-index: 2;
+}
+
+/* Alinhamento do conteúdo sobre o fundo */
+.det-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 60px;
+    box-sizing: border-box;
+}
+
+.det-content {
+    max-width: 800px; /* Limita a largura apenas para o texto não esticar demasiado */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Botão Voltar */
+.det-btn-back {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.det-btn-back:hover {
+    background: #e50914;
+    border-color: #e50914;
+}
+
+/* Elementos de Texto */
+.det-tag-category {
+    color: #ffcc00;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.det-main-title {
+    font-size: 4rem; /* Título gigante */
+    margin: 0 0 20px 0;
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.det-metadata {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.det-release {
+    color: #cccccc;
+}
+
+.det-price-tag {
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.det-full-desc {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #e5e5e5;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Botão de Ação */
+.det-btn-buy {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+    transition: 0.3s;
+}
+
+.det-btn-buy:hover {
+    background: #b80710;
+    transform: translateY(-2px);
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Adaptação para ecrãs pequenos (Telemóveis) */
+@media (max-width: 768px) {
+    .det-container { padding: 30px 20px; }
+    .det-main-title { font-size: 2.5rem; }
+    .det-overlay { background: rgba(0,0,0,0.8); } /* Fundo mais escuro no telemóvel */
+}
+
