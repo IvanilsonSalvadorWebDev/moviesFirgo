@@ -30,7 +30,7 @@ hr {
 #app {
     display: grid;
     grid-template-columns: 1fr; 
-    grid-template-rows: auto 1fr auto; 
+    grid-template-rows: auto auto auto auto; 
     height: 100vh; 
     width: 100%;
     grid-template-areas:
@@ -54,6 +54,7 @@ main {
     width: 100%;
     max-width: 100%;  
     background: #121212;
+    height:auto;
     overflow-y: auto; 
     scrollbar-width: thin; 
     scrollbar-color: #84cc16 transparent;
@@ -377,32 +378,53 @@ main::-webkit-scrollbar-thumb {
  color: var(--text-rock);
 }
 
+/* Container Geral (Alinha o ícone e outros elementos na barra superior) */
 .user-status {
- display: flex;
- align-items: center;
- gap: 12px;
- font-size: 0.9rem; /* Adicionado para diminuir o texto do utilizador */
- font-weight: var(--fw-bold);
- cursor: pointer;
- color: var(--text-rock);
+    position: relative; /* Transforma esta div na base de posicionamento */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px; /* Dá uma área de clique confortável */
 }
 
-.cart-icon-wrapper {
- position: relative;
- font-size: 1.15rem; /* Reduzido de 1.3rem */
+/* Estilo do seu Ícone do Carrinho (Ion-Icon) */
+.user-status ion-icon {
+    font-size: 1.4rem; /* Tamanho do ícone ajustado */
+    color: #F5F5F5;
+    transition: color 0.2s ease;
 }
 
+/* Efeito de brilho ao passar o rato no carrinho */
+.user-status:hover ion-icon {
+    color: #84cc16; /* O seu verde de destaque */
+}
+
+/* O Contador Vermelho (Alinhado perfeitamente sobre o Ion-Icon) */
 .cart-count {
- background: var(--danger-red);
- color: white;
- font-size: 0.65rem; /* Reduzido */
- padding: 1px 5px; /* Ajustado para um círculo menor */
- border-radius: 12px;
- position: absolute;
- top: -6px; /* Corrigido de 20px para não ficar desalinhado para baixo */
- right: -8px; /* Corrigido de 32px para colar no ícone */
- font-weight: var(--fw-black);
+    position: absolute;
+    top: 0px;       /* Cola no topo do ícone */
+    right: -2px;    /* Desloca ligeiramente para a direita do ícone */
+    
+    background: #ef4444; /* Vermelho vibrante */
+    color: #FFFFFF;
+    font-size: 0.65rem;
+    font-weight: 900;
+    
+    /* Cria um círculo perfeito que não deforma */
+    width: 15px;
+    height: 15px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Garante formato circular */
+    border: 1.5px solid #161616; /* Linha de contorno escura para destacar do fundo */
+    
+    /* Impede que o ponteiro do rato interfire com o clique do botão */
+    pointer-events: none; 
 }
+
 
 .categories-bar {
  border-top: 1px solid var(--border-dark, #2A2A2A);

@@ -19,6 +19,7 @@ import {verDetalhesDeFilme} from './gestaoDeFilmes/verDetalhesDeFilme.js';
 
 //gestaoDeCarts
 import {adicionarAoCarrinho} from './gestaoDeCart/adicionarAoCarrinho.js';
+import {criarCarrinho} from './gestaoDeCart/criarCarrinho.js';
 
 
 document.querySelector('#app').innerHTML = `
@@ -86,10 +87,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
     filtrarFilmes(filmes);
     alternarCategorias(filmes);
     ordenarFilmes(filmes);
-    pesquisarFilmes(filmes, listarFilmes(filmes));
+    pesquisarFilmes(filmes);
     filtrarFilmesPor(filmes);
     pesquisarFilmesPorDate(filmes);
     pesquisarFilmesPorPrice(filmes);
     verDetalhesDeFilme(filmes);
+
+    //
+    criarCarrinho();
     adicionarAoCarrinho(filmes);
+    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });

@@ -3,10 +3,10 @@ export function adicionarAoCarrinho(filmes){
 // Adicionar um evento ao botao
 // Receber o id o filme
 //
-
   const containerMovies = document.getElementById('listaFilmes'); 
-  
   const containerlistaFilmes = document.getElementById('addCart');
+  
+  const getCart = JSON.parse(localStorage.getItem('Carrinho'));
 
   containerMovies.addEventListener('click', function(event){
 
@@ -17,14 +17,9 @@ export function adicionarAoCarrinho(filmes){
   
   const filtroFilme = filmes.filter(filme => filme.id === Number(buttonId));
 
-
-  let cart = [];
-
-  let storage = localStorage.setItem('Carrinho', JSON.stringify(filtroFilme));
+    getCart.push(filtroFilme[0]);
   
-  const storedMdovies =JSON.parse(localStorage.getItem('Carrinho'));
-  
-    const mappingProducts = storedMdovies.map(function(filme){
+    const mappingProducts = getCart.map(function(filme){
   
     containerMovies.innerHTML += '';
 
@@ -58,7 +53,8 @@ export function adicionarAoCarrinho(filmes){
     `;
   });
 
-  console.log(storedMdovies);
+  console.log(typeof getCart);
+  console.log(getCart);
   
 });
 
