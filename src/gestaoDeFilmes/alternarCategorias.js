@@ -2,6 +2,8 @@ export function alternarCategorias(filmes){
 
   const containerTab = document.getElementById('categories-item');
   const containerlistaFilmes = document.getElementById('listaFilmes');
+  
+  let movieBanner = document.getElementById('movie-banner');
 
   containerTab.addEventListener('click', function(event){
 
@@ -12,12 +14,16 @@ export function alternarCategorias(filmes){
       console.log(catId);
 
   if(catId === 'SkyFy' ){
-      
+  
+
     console.log(catId);
     
   const Tab = document.getElementById('categ-item');
   
-  Tab.classList.add('active');
+    Tab.classList.add('active');
+
+    movieBanner.style.display='none';
+
 
   const filtro = filmes.filter(filme => filme.category === 'SkyFy');
 
@@ -26,24 +32,38 @@ export function alternarCategorias(filmes){
         containerlistaFilmes.innerHTML = '';
         containerlistaFilmes.innerHTML += `
         
-        <ul id='card' data-id='${filme.id}'>
-            <div id='saberMais'>
-                  <button id='${filme.id}' class='cat'><ion-icon name="cart"></ion-icon></button>
-                  <li>${filme.category}</li>
-              </div>
-              <div>
-              <img src='${filme.image}' width='100%'>
-              </div>
-              <li>${filme.title}</li>  
-              <li>${filme.desc}</li>
-              <div id='saberMais'> <li>${filme.price}Kz</li>
-              <li>Lançamento: ${filme.anoLanc}</li></div>
-             
-              <div id='saberMais'>
-                  <button id='button'>SaberMais</button>
-                  <button id='${filme.id}' class='cat button'><ion-icon name="cart"></ion-icon></button>
-              </div>
-            </ul>
+         <li class='card'>
+    <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
+    <div class='card-top'>
+        <span class='category'>${filme.category}</span>
+        <button class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
+    </div>
+
+    <!-- Contentor da Imagem -->
+    <div class='card-media'>
+        <img src='${filme.image}' alt='${filme.title}'>
+    </div>
+
+    <!-- Informações Centrais -->
+    <div class='card-info'>
+        <h2>${filme.title}</h2>
+        <p class='desc'>${filme.desc}</p>
+    </div>
+
+    <!-- Detalhes Finais: Preço e Ano -->
+    <div class='card-details'>
+        <span class='price'>${filme.price} Kz</span>
+        <span class='year'>${filme.anoLanc}</span>
+    </div>
+
+    <!-- Botão de Compra/Carrinho -->
+    <div class='card-action'>
+        <button class='cartButton' data-id='${filme.id}'>
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</li>
+
         
         `;
 
@@ -55,8 +75,11 @@ export function alternarCategorias(filmes){
     console.log(this);
     
 */ const Tab = document.getElementById('categ-item');
+
   Tab.classList.add('active');
-  
+
+      movieBanner.style.display='none';
+
   const filtro = filmes.filter(filme => filme.category === 'Terror');
 
   const listaFilmes = filtro.map(function(filme){
@@ -64,26 +87,38 @@ export function alternarCategorias(filmes){
         containerlistaFilmes.innerHTML = '';
         containerlistaFilmes.innerHTML += `
         
-        <ul id='card' data-id='${filme.id}'>
-            <div id='saberMais'>
-                  <button id='${filme.id}' class='cat'><ion-icon name="cart"></ion-icon></button>
-                  <li>${filme.category}</li>
+         <li class='card'>
+    <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
+    <div class='card-top'>
+        <span class='category'>${filme.category}</span>
+        <button class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
+    </div>
 
-              </div>
-              <div>
-              <img src='${filme.image}' width='100%'>
-              </div>
-              <li>${filme.title}</li>  
-              <li>${filme.desc}</li>
-              <div id='saberMais'> <li>${filme.price}Kz</li>
-              <li>Lançamento: ${filme.anoLanc}</li></div>
-             
-              <div id='saberMais'>
-                  <button id='button'>SaberMais</button>
-                  <button id='${filme.id}' class='cat button'><ion-icon name="cart"></ion-icon></button>
+    <!-- Contentor da Imagem -->
+    <div class='card-media'>
+        <img src='${filme.image}' alt='${filme.title}'>
+    </div>
 
-              </div>
-            </ul>
+    <!-- Informações Centrais -->
+    <div class='card-info'>
+        <h2>${filme.title}</h2>
+        <p class='desc'>${filme.desc}</p>
+    </div>
+
+    <!-- Detalhes Finais: Preço e Ano -->
+    <div class='card-details'>
+        <span class='price'>${filme.price} Kz</span>
+        <span class='year'>${filme.anoLanc}</span>
+    </div>
+
+    <!-- Botão de Compra/Carrinho -->
+    <div class='card-action'>
+        <button class='cartButton' data-id='${filme.id}'>
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</li>
+
         `;
 
         });
@@ -91,7 +126,11 @@ export function alternarCategorias(filmes){
   }else if (catId === 'Action' ) {
 
   const Tab = document.getElementById('categ-item');
+  
   Tab.classList.add('active');
+
+      movieBanner.style.display='none';
+
 
   const filtro = filmes.filter(filme => filme.category === 'Action');
 
@@ -100,26 +139,38 @@ export function alternarCategorias(filmes){
         containerlistaFilmes.innerHTML = '';
         containerlistaFilmes.innerHTML += `
         
-        <ul id='card' data-id='${filme.id}'>
-            <div id='saberMais'>
-                  <button id='${filme.id}' class='cat'><ion-icon name="cart"></ion-icon></button>
-                  <li>${filme.category}</li>
+        <li class='card'>
+    <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
+    <div class='card-top'>
+        <span class='category'>${filme.category}</span>
+        <button class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
+    </div>
 
-              </div>
-              <div>
-              <img src='${filme.image}' width='100%'>
-              </div>
-              <li>${filme.title}</li>  
-              <li>${filme.desc}</li>
-              <div id='saberMais'> <li>${filme.price}Kz</li>
-              <li>Lançamento: ${filme.anoLanc}</li></div>
-             
-              <div id='saberMais'>
-                  <button id='button'>SaberMais</button>
-                  <button id='${filme.id}' class='cat button'><ion-icon name="cart"></ion-icon></button>
+    <!-- Contentor da Imagem -->
+    <div class='card-media'>
+        <img src='${filme.image}' alt='${filme.title}'>
+    </div>
 
-              </div>
-            </ul>
+    <!-- Informações Centrais -->
+    <div class='card-info'>
+        <h2>${filme.title}</h2>
+        <p class='desc'>${filme.desc}</p>
+    </div>
+
+    <!-- Detalhes Finais: Preço e Ano -->
+    <div class='card-details'>
+        <span class='price'>${filme.price} Kz</span>
+        <span class='year'>${filme.anoLanc}</span>
+    </div>
+
+    <!-- Botão de Compra/Carrinho -->
+    <div class='card-action'>
+        <button class='cartButton' data-id='${filme.id}'>
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</li>
+
         
         `;
 
@@ -128,7 +179,11 @@ export function alternarCategorias(filmes){
   }else if (catId === 'Comedy' ) {
 
   const Tab = document.getElementById('categ-item');
+  
   Tab.classList.add('active');
+
+      movieBanner.style.display='none';
+
 
   const filtro = filmes.filter(filme => filme.category === 'Comedy');
 
@@ -137,26 +192,38 @@ export function alternarCategorias(filmes){
         containerlistaFilmes.innerHTML = '';
         containerlistaFilmes.innerHTML += `
         
-        <ul id='card' data-id='${filme.id}'>
-            <div id='saberMais'>
-                  <button id='${filme.id}' class='cat'><ion-icon name="cart"></ion-icon></button>
-                  <li>${filme.category}</li>
+        <li class='card'>
+    <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
+    <div class='card-top'>
+        <span class='category'>${filme.category}</span>
+        <button class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
+    </div>
 
-              </div>
-              <div>
-              <img src='${filme.image}' width='100%'>
-              </div>
-              <li>${filme.title}</li>  
-              <li>${filme.desc}</li>
-              <div id='saberMais'> <li>${filme.price}Kz</li>
-              <li>Lançamento: ${filme.anoLanc}</li></div>
-             
-              <div id='saberMais'>
-                  <button id='button'>SaberMais</button>
-                  <button id='${filme.id}' class='cat button'><ion-icon name="cart"></ion-icon></button>
+    <!-- Contentor da Imagem -->
+    <div class='card-media'>
+        <img src='${filme.image}' alt='${filme.title}'>
+    </div>
 
-              </div>
-            </ul>
+    <!-- Informações Centrais -->
+    <div class='card-info'>
+        <h2>${filme.title}</h2>
+        <p class='desc'>${filme.desc}</p>
+    </div>
+
+    <!-- Detalhes Finais: Preço e Ano -->
+    <div class='card-details'>
+        <span class='price'>${filme.price} Kz</span>
+        <span class='year'>${filme.anoLanc}</span>
+    </div>
+
+    <!-- Botão de Compra/Carrinho -->
+    <div class='card-action'>
+        <button class='cartButton' data-id='${filme.id}'>
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</li>
+
         
         `;
 
@@ -167,33 +234,48 @@ export function alternarCategorias(filmes){
   const filtro = filmes.filter(filme => filme.category === 'Drama');
 
   const Tab = document.getElementById('categ-item');
+
   Tab.classList.add('active');
+
+      movieBanner.style.display='none';
   
   const listaFilmes = filtro.map(function(filme){
 
         containerlistaFilmes.innerHTML = '';
         containerlistaFilmes.innerHTML += `
         
-        <ul id='card' data-id='${filme.id}'>
-            <div id='saberMais'>
-                  <button id='${filme.id}' class='cat'><ion-icon name="cart"></ion-icon></button>
-                  <li>${filme.category}</li>
+         <li class='card'>
+    <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
+    <div class='card-top'>
+        <span class='category'>${filme.category}</span>
+        <button class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
+    </div>
 
-              </div>
-              <div>
-              <img src='${filme.image}' width='100%'>
-              </div>
-              <li>${filme.title}</li>  
-              <li>${filme.desc}</li>
-              <div id='saberMais'> <li>${filme.price}Kz</li>
-              <li>Lançamento: ${filme.anoLanc}</li></div>
-             
-              <div id='saberMais'>
-                  <button id='button'>SaberMais</button>
-                  <button id='${filme.id}' class='cat button'><ion-icon name="cart"></ion-icon></button>
+    <!-- Contentor da Imagem -->
+    <div class='card-media'>
+        <img src='${filme.image}' alt='${filme.title}'>
+    </div>
 
-              </div>
-            </ul>
+    <!-- Informações Centrais -->
+    <div class='card-info'>
+        <h2>${filme.title}</h2>
+        <p class='desc'>${filme.desc}</p>
+    </div>
+
+    <!-- Detalhes Finais: Preço e Ano -->
+    <div class='card-details'>
+        <span class='price'>${filme.price} Kz</span>
+        <span class='year'>${filme.anoLanc}</span>
+    </div>
+
+    <!-- Botão de Compra/Carrinho -->
+    <div class='card-action'>
+        <button class='cartButton' data-id='${filme.id}'>
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</li>
+
         
         `;
 

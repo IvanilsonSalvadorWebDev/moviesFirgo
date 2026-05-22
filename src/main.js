@@ -7,6 +7,8 @@ import {listarCategorias} from './gestaoDeFilmes/listarCategorias.js';
 import {listarFilmes} from './gestaoDeFilmes/listarFilmes.js';
 import {filtrarFilmes} from './gestaoDeFilmes/filtrarFilmes.js';
 import {navBar} from './layout/navBar.js';
+import {hero} from './ui/hero.js';
+
 import {ordenarFilmes} from './gestaoDeFilmes/ordenarFilmes.js';
 import {alternarCategorias} from './gestaoDeFilmes/alternarCategorias.js';
 import {pesquisarFilmes} from './gestaoDeFilmes/search/pesquisarFilmes.js';
@@ -14,6 +16,10 @@ import {filtrarFilmesPor} from './gestaoDeFilmes/search/filtrarFilmesPor.js';
 import {pesquisarFilmesPorDate} from './gestaoDeFilmes/search/pesquisarFilmesPorDate.js';
 import {pesquisarFilmesPorPrice} from './gestaoDeFilmes/search/pesquisarFilmesPorPrice.js';
 import {verDetalhesDeFilme} from './gestaoDeFilmes/verDetalhesDeFilme.js';
+
+//gestaoDeCarts
+import {adicionarAoCarrinho} from './gestaoDeCart/adicionarAoCarrinho.js';
+
 
 document.querySelector('#app').innerHTML = `
           <header>
@@ -60,6 +66,9 @@ document.querySelector('#app').innerHTML = `
         </aside>
 
 <main id='main'>
+   ${hero(filmes)}
+
+
     <div id='listaFilmes'>
     </div>
 
@@ -82,4 +91,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
     pesquisarFilmesPorDate(filmes);
     pesquisarFilmesPorPrice(filmes);
     verDetalhesDeFilme(filmes);
-});
+    adicionarAoCarrinho(filmes);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   });

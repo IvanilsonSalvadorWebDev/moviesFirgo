@@ -1,12 +1,17 @@
 export function verDetalhesDeFilme(filmes){
 
   const containerSaberMais = document.getElementById('listaFilmes'); 
+
+    let movieBanner = document.getElementById('movie-banner');
+
   
   const containerlistaFilmes = document.getElementById('main');
 
   containerSaberMais.addEventListener('click', function(event){
+    
+    movieBanner.style.display='none';
 
-  const card = event.target.closest('#card');
+  const card = event.target.closest('#btn-saber-mais');
 
   let movieCardId = card.dataset.id; 
   

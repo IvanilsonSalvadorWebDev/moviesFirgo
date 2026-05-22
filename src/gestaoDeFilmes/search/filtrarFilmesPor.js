@@ -4,11 +4,16 @@ export function filtrarFilmesPor(filmes, listarFilmes){
 
   let select = document.getElementById('select');
 
+  let movieBanner = document.getElementById('movie-banner');
+
   select.addEventListener('change', function(event){
+    
+    movieBanner.style.display='none';
 
   const selectId  = event.target.value;
 
   if (selectId === 'title'){
+
   
   //pegar o id 
   const inputSearch = document.getElementById('inputSearch');

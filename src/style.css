@@ -1,315 +1,342 @@
-
-:root {
-  /* Cores de Fundo (Camadas de Profundidade) */
-  --bg-white: #0A0A0C;         /* Preto absoluto e profundo (Deep Space) */
-  --bg-light: #121214;         /* Cinza titânio para barras de navegação */
-  --bg-categories: #1A1A1E;    /* Cartões e categorias com relevo visual */
-
-  /* Tipografia de Alto Contraste */
-  --text-rock: #F8FAFC;        /* Branco puro gelo para legibilidade máxima */
-  --text-muted: #94A3B8;       /* Cinza ardósia para textos secundários */
-
-  /* Cores de Destaque (Neon Sofisticado) */
-  --primary-lime: #84cc16;     /* Lime elétrico com maior saturação */
-  --lime-hover: #DFFF66;       /* Brilho intenso para interações */
-  --bg-lime-active: #162400;   /* Contraste ideal para estados ativos */
-
-  /* Estados de Feedback */
-  --danger-red: #FF4D4D;       /* Vermelho vibrante e visível */
-  --danger-hover: #FF8080;     /* Alerta de passagem do rato */
-  --success-green: #00E676;    /* Verde esmeralda moderno */
-
-  /* Estrutura, Linhas e Efeitos */
-  --sidebar-width: 240px;
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(255, 255, 255, 0.03); 
-  --radius: 16px;              /* Cantos mais arredondados e modernos */
-  --border-dark: #222226;      /* Linhas finas de alta definição */
-
-  /* Tipografia */
-  --font-main: "Lato", sans-serif;
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-bold: 700;
-  --fw-black: 900;
-}
-
-#app{
-   display:grid;
-   grid-template-columns:200px 1fr 1fr 1fr;
-   grid-template-rows:200px 1fr 1fr 1fr;
-   grid-template-areas:"sidebar header header header"
-    "sidebar content content content"
-    "sidebar footer footer footer ";
-}
-
-header{
-    background-color: brown;
-}
-
-nav{
-  padding:8px;
-}
-
-#cat-container{
-
-   width:auto;
-   display:flex;
-   justify-content:start;
-   gap:12px;
-   list-style-type:none;
-   text-decoration: none;
-}
-
-.cat{
-    cursor:pointer;
-    background: var(--border-dark, #2A2A2A);
-    border: 1px solid #ddd;
-    padding: 6px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: var(--text-muted);
-}
-
-.button{
-    cursor:pointer;
-    background: #84cc16;
-    border: 1px solid #ddd;
-    padding: 6px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color:  #2A2A2A;
-}
-
-.active{
-    cursor:pointer;
-    background:#84cc16;
-    padding:8px 12px;
-    color:white;
-    border:1px solid white;
-}
-
-button{
-margin-top:24px;
-  border:none;
-  font-weight:bold;
-}
-
-#listaFilmes{
-  display:flex;
-  flex-direction:flex-row;
-  justify-content:center;
-  gap:12px;
-}
-
-#card{
-list-style-type:none;
-padding:24px;
-color:var(--bg-white);
-background:#f5f5f4;
-
-}
-.search-icon{
-font-size:2em;
-}
-
-
-#select{
-margin-left:36px;
-}
-
-#inputSelect{
-  display:flex;
-  flex-direction:flex-row;
-  align-items:center;
-  justify-content:flex-start;
-  gap:2px;
-}
-
-body{
-margin:0;
-overflow-y:hidden;
-}
-
-#app{
-    display:grid;
-    grid-template-columns: 200px auto auto;
-    grid-template-rows:;
-      grid-auto-flow: row;    
-    grid-template-areas:
-    "header header header"
-    "main main main"
-    "footer footer footer";
-}
-
-header{
-  grid-area:header;
-  background:#facc15;
-}
-
-aside{
-  grid-area: sidebar;
-  display:none;
-  background:#292524;
-}
-
-.sidebar {
- background-color: var(--bg-white);
- border-right: 1px solid rgba(0,0,0,0.05);
- display: none;
- flex-direction: column;
- padding:  8px 8px; 
- height: 100%;
- transition: var(--transition);
-}
-
-main{
-  width:100%;
-  padding-top:4px;
-  grid-area: main;
-  background:#171717;
-  overflow-y:scroll;
-  overflow-y: auto;
-  scrollbar-width: thin; /* Torna a barra fina no Firefox */
-  scrollbar-color: #84cc16 transparent; /* Cor do botão e fundo transparent*/
-}
-
-/* ---- 2. Motores WebKit (Chrome, Safari, Edge, Opera) ---- */
-
-/* Largura da barra de rolagem vertical */
-main::-webkit-scrollbar {
-  width: 6px;               /* Largura ultra-fina (padrão costuma ser 12px-16px) */
-  height: 6px;              /* Altura para scroll horizontal */
-}
-
-/* O trilho/fundo da barra de rolagem */
-main::-webkit-scrollbar-track {
-  background: transparent;  /* Fundo transparente para não poluir o design */
-}
-
-/* O botão arrastável (indicador de posição) */
-main::-webkit-scrollbar-thumb {
-  background-color:#84cc16; /* Cor cinza suave com transparência */
-  border-radius: 20px;       /* Bordas totalmente arredondadas */
-  border: 1px solid transparent; /* Truque para dar espaçamento se necessário */
-  transition: background-color 0.2s ease;
-}
-
-/* Efeito de hover ao passar o rato no botão */
-main::-webkit-scrollbar-thumb:hover {
-  background-color: #84cc16; /* Escurece ligeiramente ao focar */
-}
-
-
-footer{
-  grid-area: footer;
-  background:#0a0a0a;
-}
-
-#saberMais{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-between;
-  gap:2px;
-
-}
 /* ==========================================================================
 1. IMPORTS E CONFIGURAÇÕES GLOBAIS (DESIGN SYSTEM)
 ========================================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-
+@import url('https://googleapis.com');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-main);
+    font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-
 body {
-    background: #fafafa;
-    background-attachment: fixed;
-    color: var(--text-rock);
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.6;
-}
-
-/* Títulos e Headers */
-h1, h2, h3, h4, .logo, .nav-item, .btn-primary, .movie-title {
-    font-family: "Lato", sans-serif;
+    background: #121212; /* Ajustado para bater certo com o tema dark */
+    color: #F5F5F5;
+    line-height: 1.5;
+    overflow-y: hidden;
 }
 
 hr { 
- margin: 25px 0; 
- border: 0; 
- border-top: 1px solid var(--border-dark, #2A2A2A); 
+    margin: 16px 0; 
+    border: 0; 
+    border-top: 1px solid #2A2A2A; 
 }
 
 /* ==========================================================================
-2. ESTRUTURA DE LAYOUT (CONTAINER & SIDEBAR)
+2. ESTRUTURA DE LAYOUT PRINCIPAL (#APP)
 ========================================================================= */
-.main-wrapper {
+#app {
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto 1fr auto; 
+    height: 100vh; 
+    width: 100%;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
 }
 
-main { 
-background:#121212;
+header {
+    grid-area: header;
+    background: #161616; /* Removido o amarelo/castanho para um look dark premium */
+    border-bottom: 1px solid #2A2A2A;
 }
 
-.logo{
-padding-left:20px;
+nav {
+    padding: 10px 16px;
+}
 
+main {
+    grid-area: main;
+    width: 100%;
+    max-width: 100%;  
+    background: #121212;
+    overflow-y: auto; 
+    scrollbar-width: thin; 
+    scrollbar-color: #84cc16 transparent;
+}
+
+footer {
+    grid-area: footer;
+    background: #0a0a0a;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #737373;
+    border-top: 1px solid #2A2A2A;
+}
+
+/* ==========================================================================
+3. NAVEGAÇÃO, FILTROS E CATEGORIAS (COMPACTOS)
+========================================================================= */
+#cat-container {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 8px;
+   list-style: none;
+}
+
+/* Base Comum para Botões de Categoria */
+.cat, .button {
+    cursor: pointer;
+    border: 1px solid #2A2A2A;
+    padding: 6px 14px;
+    border-radius: 20px; /* Estilo pílula mais moderno */
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.cat {
+    background: #2A2A2A;
+    color: #A3A3A3;
+}
+
+.cat:hover, .active {
+    background: #84cc16;
+    color: #171717;
+    border-color: #84cc16;
+}
+
+/* Botão Secundário do Filtro */
+.button {
+    background: #84cc16;
+    color: #171717;
+    border-color: #84cc16;
+}
+
+#inputSelect {
+  display: flex;
+  flex-direction: row; /* Corrigido de 'flex-row' */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+#select {
+    margin-left: 16px;
+    background: #2A2A2A;
+    color: #FFF;
+    border: 1px solid #3D3D3D;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    outline: none;
+}
+
+/* ==========================================================================
+4. CONTROLO DO LOGO E SIDEBAR (OCULTA POR PADRÃO)
+========================================================================= */
+.logo {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
 }
 
 .logo h2 {
- font-size: 1.6rem;
- margin-bottom: 12px;
- font-weight: var(--fw-black);
- letter-spacing: -1px;
- color: var(--text-rock);
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #FFF;
 }
 
 .logo span { 
- color: var(--primary-lime); 
- filter: drop-shadow(0 0 5px rgba(255, 127, 17, 0.2));
+    color: #84cc16; 
 }
 
-.nav-item {
- background: none;
- border: none;
- padding: 14px 18px;
- text-align: left;
- cursor: pointer;
- border-radius: var(--radius);
- color: var(--text-muted);
- font-size: 0.95rem;
- font-weight: var(--fw-bold);
- display: flex;
- align-items: center;
- gap: 15px;
- transition: var(--transition);
- width: 100%;
- margin-bottom: 5px;
-}
-
-.nav-item i { font-size: 1.1rem; width: auto; text-align: center; }
-
-.nav-item:hover, .nav-item.active {
-   background-color: #84cc16;
-
- color: white;
+.sidebar {
+    display: none; /* Mantido oculto conforme a sua estrutura de 1 coluna */
 }
 
 /* ==========================================================================
-3. CABEÇALHO (BUSCA E CATEGORIAS)
+5. MÁGICA DO GRID: ALINHAMENTO PERFEITO DOS CARDS
+========================================================================= */
+#listaFilmes {
+    display: grid;
+    /* Alinhamento responsivo perfeito: cria colunas de no mínimo 200px até preencher o ecrã */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+    padding: 0; /* Zerado para não colidir com o padding do main */
+    list-style: none;
+}
+
+/* ==========================================================================
+6. DESIGN RECALIBRADO DO HERO CARD (MOVIE BANNER)
+========================================================================= */
+.movie-banner {
+    position: relative;
+    height: 320px; /* Compactado ligeiramente de 380px para melhor proporção */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: #1A1A1A;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.movie-banner:hover {
+    transform: translateY(-4px);
+    border-color: #84cc16;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagem de Fundo/Poster */
+.movie-poster-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.movie-poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Cortina Escura Gradual para garantir leitura do texto */
+.movie-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0.1) 0%, rgba(18, 18, 18, 0.75) 50%, #121212 100%);
+    z-index: 2;
+}
+
+/* Elementos acima do poster */
+.movie-header-tags, 
+.movie-body-content, 
+.movie-meta-data, 
+.movie-action-footer {
+    position: relative;
+    z-index: 3;
+}
+
+/* Linha do Topo do Card */
+.movie-header-tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 18, 18, 0.6);
+    padding: 4px 8px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+}
+
+.movie-genre {
+    font-size: 0.7rem;
+    color: #E5E5E5;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.btn-view-details {
+    background: transparent;
+    border: none;
+    color: #84cc16;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Informações do Filme */
+.movie-body-content {
+    margin-top: auto; /* Empurra todo o conteúdo textual para o fundo */
+}
+
+.movie-main-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Evita que títulos gigantes quebrem o design */
+}
+
+.movie-synopsis {
+    font-size: 0.75rem;
+    color: #A3A3A3;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Tranca a sinopse em 2 linhas no máximo */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+/* Meta dados (Preço e Ano) */
+.movie-meta-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.movie-rental-price {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+
+.movie-release-year {
+    font-size: 0.7rem;
+    color: #D6D6D6;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+/* Botão Compacto Adicionar ao Carrinho */
+.btn-add-to-rent {
+    width: 100%;
+    background-color: #84cc16;
+    color: #121212;
+    border: none;
+    padding: 8px; /* Reduzido de 12px para ser mais compacto */
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-add-to-rent:hover {
+    background-color: #a3e635;
+}
+
+/* ==========================================================================
+7. CUSTOMIZAÇÃO EXTRA DA BARRA DE ROLAGEM (WEBKIT)
+========================================================================= */
+main::-webkit-scrollbar {
+    width: 6px;
+}
+main::-webkit-scrollbar-track {
+    background: transparent;
+}
+main::-webkit-scrollbar-thumb {
+    background-color: #84cc16;
+    border-radius: 10px;
+}
+
+
+
+
+/* ==========================================================================
+3. CABEÇALHO (BUSCA E CATEGORIAS) - VERSÃO COMPACTA
 ========================================================================= */
 .search-nav {
  background: #161616;
@@ -320,18 +347,18 @@ padding-left:20px;
  display: flex;
  justify-content: space-between;
  align-items: center;
- padding: 12px 20px;
+ padding: 6px 16px; /* Reduzido de 12px 20px para achatar o cabeçalho */
 }
 
 .search-box {
  background: var(--bg-white);
- padding: 8px 20px;
- border-radius: 30px;
+ padding: 5px 14px; /* Reduzido de 8px 20px para inputs mais finos */
+ border-radius: 20px; /* Ajustado proporcionalmente */
  display: flex;
  align-items: center;
- gap: 12px;
+ gap: 8px;
  width: 100%;
- max-width: 450px;
+ max-width: 380px; /* Reduzido de 450px para não esticar tanto */
  border: 1px solid var(--border-dark, #2A2A2A);
  transition: var(--transition);
 }
@@ -345,7 +372,7 @@ padding-left:20px;
  background: none;
  outline: none;
  width: 100%;
- font-size: 0.95rem;
+ font-size: 0.85rem; /* Reduzido de 0.95rem */
  font-weight: var(--fw-medium);
  color: var(--text-rock);
 }
@@ -353,7 +380,8 @@ padding-left:20px;
 .user-status {
  display: flex;
  align-items: center;
- gap: 15px;
+ gap: 12px;
+ font-size: 0.9rem; /* Adicionado para diminuir o texto do utilizador */
  font-weight: var(--fw-bold);
  cursor: pointer;
  color: var(--text-rock);
@@ -361,98 +389,98 @@ padding-left:20px;
 
 .cart-icon-wrapper {
  position: relative;
- font-size: 1.3rem;
+ font-size: 1.15rem; /* Reduzido de 1.3rem */
 }
 
 .cart-count {
  background: var(--danger-red);
  color: white;
- font-size: 0.7rem;
- padding: 2px 7px;
- border-radius: 20px;
+ font-size: 0.65rem; /* Reduzido */
+ padding: 1px 5px; /* Ajustado para um círculo menor */
+ border-radius: 12px;
  position: absolute;
- top: 20px;
- right: 32px;
+ top: -6px; /* Corrigido de 20px para não ficar desalinhado para baixo */
+ right: -8px; /* Corrigido de 32px para colar no ícone */
  font-weight: var(--fw-black);
 }
 
 .categories-bar {
  border-top: 1px solid var(--border-dark, #2A2A2A);
  display: flex;
- flex-direction:flex-row;
- justify-content:space-between;
- 
- align-items:center;
- gap: 12px;
- padding: 8px 12px;
+ flex-direction: row; /* Corrigido de 'flex-row' para 'row' */
+ justify-content: space-between;
+ align-items: center;
+ gap: 10px;
+ padding: 6px 12px; /* Reduzido de 8px para achatar a barra inferior */
 }
 
 .btn-category, .btn-category2 {
- background:;
+ background: transparent; /* Corrigido background vazio */
  border: 1px solid var(--border-dark, #2A2A2A);
- padding: 6px 16px;
- border-radius:8px;
+ padding: 4px 12px; /* Reduzido de 6px/8px para botões tipo etiqueta pequena */
+ border-radius: 6px;
  cursor: pointer;
  font-size: 0.7rem;
- font-weight:bold;
+ font-weight: bold;
  transition: var(--transition);
  color: var(--text-muted);
 }
 
-.select{
+.select {
  background: var(--border-dark, #2A2A2A);
  border: 1px solid #ddd;
- padding: 6px 16px;
- border-radius:8px;
+ padding: 4px 12px; /* Reduzido para alinhar com os botões */
+ border-radius: 6px;
  cursor: pointer;
  font-size: 0.7rem;
- font-weight:bold;
+ font-weight: bold;
  color: var(--text-muted);
 }
 
 .btn-category { font-weight: var(--fw-bold); }
-.btn-category2 { padding: 8px 16px; font-weight: var(--fw-regular); }
+.btn-category2 { font-weight: var(--fw-regular); }
 
 .btn-category.active, .btn-category:hover {
  background-color: var(--primary-lime);
  color: white;
  border-color: var(--primary-lime);
  font-weight: var(--fw-bold);
-
 }
 
 /* ==========================================================================
-4. COMPONENTES DE INTERFACE (BOTÕES E INPUTS)
+4. COMPONENTES DE INTERFACE (BOTÕES E INPUTS) - MAIS COMPACTOS
 ========================================================================= */
 .btn-primary, .btn-watch, .btn-add-cart, .btn-save {
  background-color: var(--primary-lime);
  color: white;
  border: none;
- padding: 12px 25px;
- border-radius: 20px;
+ padding: 8px 18px; /* Reduzido substancialmente de 12px 25px */
+ border-radius: 16px; /* Suavizado o arredondado para botões menores */
  font-weight: var(--fw-bold);
+ font-size: 0.85rem; /* Adicionado para equilibrar o tamanho compacto */
  cursor: pointer;
  display: flex;
  align-items: center;
  justify-content: center;
- gap: 10px;
+ gap: 8px;
  transition: var(--transition);
 }
 
 .btn-primary:hover, .btn-watch:hover, .btn-add-cart:hover {
  background-color: var(--lime-hover);
- transform: translateY(-2px);
- box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+ transform: translateY(-1px); /* Reduzido o pulo para 1px */
+ box-shadow: 0 4px 10px rgba(132, 204, 22, 0.25); /* Sombra mais discreta */
 }
 
-.btn-add-cart { border-radius: 200px; }
+.btn-add-cart { border-radius: 100px; }
 
 .btn-remove {
  background-color: transparent;
  color: var(--danger-red);
- border: 2px solid var(--danger-red);
- padding: 8px 15px;
- border-radius: 8px;
+ border: 1.5px solid var(--danger-red);
+ padding: 6px 12px; /* Reduzido de 8px 15px */
+ border-radius: 6px;
+ font-size: 0.8rem; /* Adicionado */
  cursor: pointer;
  font-weight: var(--fw-bold);
  transition: var(--transition);
@@ -461,23 +489,24 @@ padding-left:20px;
 .btn-remove:hover {
  background-color: var(--danger-red);
  color: white;
- box-shadow: 0 4px 12px rgba(255, 56, 56, 0.2);
+ box-shadow: 0 3px 8px rgba(255, 56, 56, 0.2);
 }
 
 .btn-secondary {
  background: #f5f5f5;
  border: 1px solid #ddd;
  color: #555;
- padding: 8px 15px;
- border-radius: 20px;
+ padding: 6px 12px; /* Reduzido de 8px 15px */
+ border-radius: 16px;
  cursor: pointer;
- font-size: 0.85rem;
+ font-size: 0.8rem;
 }
 
-#btn-back { margin-bottom: 16px; border-radius: 20px; }
+#btn-back { margin-bottom: 12px; border-radius: 16px; }
 
 #btn-logout {
- margin-top: 20px !important;
+ margin-top: 12px !important;
+ padding: 6px 12px;
  font-weight: bold;
  transition: background 0.3s;
 }
@@ -488,122 +517,92 @@ padding-left:20px;
 }
 
 /* ==========================================================================
-5. GRID DE FILMES E CARDS
+2.1. SIDEBAR (BARRA LATERAL DE NAVEGAÇÃO)
 ========================================================================= */
-#listaFilmes {
-width:100%;
- display: grid;
- grid-template-columns: repeat(4, minmax(100px,1fr));
- padding:24px;
-  gap: 12px;
-}
-
-.movie-card {
- background: #262626;
- border: 3px solid var(--bg-white);
- border-radius: var(--radius);
- overflow: hidden;
- transition: var(--transition);
- }
-
-.movie-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-
-.movie-img { width: 100%; height: 320px; object-fit: cover; }
-
-.movie-info { padding: 20px; }
-
-.movie-title { 
- font-size: 1.1rem; 
- font-weight: var(--fw-black);
- margin-bottom: 10px; 
- white-space: nowrap; 
- overflow: hidden; 
- text-overflow: ellipsis; 
- color: var(--text-rock);
-}
-
-.movie-actions {
- margin-top: 4%;
- display: flex; 
- justify-content: space-between; 
- align-items: center;
-}
-
-@media (max-width: 1024px) {
-    .checkout-grid { grid-template-columns: 1fr; }
-    .payment-section { order: 2; }
-    .summary-section { order: 1; min-height: 500px; }
-}
-@media (max-width: 992px) {
- .cart-container { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
- .sidebar { left: -100%; height: 600px;
-}
- .sidebar.open { left: 0; }
- .main-wrapper { margin-left: 0; }
- .menu-toggle { display: block; }
- .top-bar, .categories-bar { padding: 15px 20px; }
- .search-box { max-width: 250px; }
-}
-/*
-/* ==========================================================================
-   HERO COMPONENT - FIXED SLIM DESIGN (ULTRA REFINED)
-   ========================================================================== */
-
-
-@media (min-width: 768px) {
-#app{
-    display:grid;
-    grid-template-columns: 200px 1fr 1fr;
-    grid-template-rows: auto 500px 80px;
-    grid-template-areas:
-    "sidebar header header"
-    "sidebar main main"
-    "sidebar footer footer";
-}
-
-.sidebar {
- background-color: var(--bg-white);
- border-right: 1px solid rgba(0,0,0,0.05);
- display: flex;
- flex-direction: column;
- justify-content:flex-start;
- padding:  8px 8px; 
- height: 100%;
- transition: var(--transition);
-}
-}
-
-/* Responsividade Mobile */
-@media (max-width: 768px) {
-
-aside{
-  grid-area: sidebar;
-  display:flex;
-  background:#292524;
-}
-
-.hero-section { 
-    height: 600px; 
-    margin:0; 
-}
-    .hero-content { padding-left:0; padding-right:0; }
-    .hero-title { font-size: 1.8rem; letter-spacing: -1px; }
-    .hero-description { font-size: 0.9rem; margin-bottom: 15px; }
-    .hero-btn-main, .hero-btn-cart { padding: 10px 18px; font-size: 0.75rem; }
-}
-
-.loader{
-    width:100%;
-    height:400px;
-    display:flex;
+#sidebar.sidebar {
+    grid-area: sidebar;
+    display: flex; /* Ativado (estava display: none) */
     flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    color:;
-    font-size:2rem;
-    
-
+    background-color: #161616; /* Cor escura alinhada com o cabeçalho */
+    border-right: 1px solid #2A2A2A;
+    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
 }
+
+/* Espaçamento do Logo no topo */
+#sidebar .logo {
+    padding: 8px 4px 24px 4px;
+}
+
+#sidebar .logo h2 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+}
+
+/* Contentor do Bloco Central de Links */
+#sidebar > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Estilo dos Botões de Navegação (Mais Compactos) */
+.nav-item {
+    background: transparent;
+    border: none;
+    padding: 10px 12px; /* Reduzido para ficar mais slim */
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #A3A3A3;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+/* Alinhamento e tamanho dos Ícones (Ion-Icons) */
+.nav-item ion-icon {
+    font-size: 1.25rem;
+    min-width: 20px;
+}
+
+/* Efeito Hover e Estado Ativo */
+.nav-item:hover, 
+.nav-item.active {
+    background-color: #84cc16; /* O seu verde de destaque */
+    color: #121212; /* Texto escuro para alto contraste */
+}
+
+/* Linha divisória interna */
+#sidebar hr {
+    margin: 12px 0;
+    border-top: 1px solid #2A2A2A;
+}
+
+/* Contentor do Botão Sair (Empurrado para o Fundo) */
+.nav-items {
+    margin-top: auto; /* Truque do flexbox que empurra o bloco para o fundo da sidebar */
+    width: 100%;
+}
+
+/* Botão Sair Customizado */
+#btn-logout.nav-item {
+    color: #ef4444; /* Vermelho suave para aviso de saída */
+    font-weight: 700;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+#btn-logout.nav-item:hover {
+    background-color: rgba(239, 68, 68, 0.1); /* Fundo vermelho translúcido no hover */
+    color: #f87171;
+}
+

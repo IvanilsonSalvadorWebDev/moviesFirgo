@@ -1,17 +1,58 @@
-/* Container que ocupa toda a tela dentro do main */
+
+:root {
+  /* Cores de Fundo (Camadas de Profundidade) */
+  --bg-white: #0A0A0C;         /* Preto absoluto e profundo (Deep Space) */
+  --bg-light: #121214;         /* Cinza titânio para barras de navegação */
+  --bg-categories: #1A1A1E;    /* Cartões e categorias com relevo visual */
+
+  /* Tipografia de Alto Contraste */
+  --text-rock: #F8FAFC;        /* Branco puro gelo para legibilidade máxima */
+  --text-muted: #94A3B8;       /* Cinza ardósia para textos secundários */
+
+  /* Cores de Destaque (Neon Sofisticado) */
+  --primary-lime: #84cc16;     /* Lime elétrico com maior saturação */
+  --lime-hover: #DFFF66;       /* Brilho intenso para interações */
+  --bg-lime-active: #162400;   /* Contraste ideal para estados ativos */
+
+  /* Estados de Feedback */
+  --danger-red: #FF4D4D;       /* Vermelho vibrante e visível */
+  --danger-hover: #FF8080;     /* Alerta de passagem do rato */
+  --success-green: #00E676;    /* Verde esmeralda moderno */
+
+  /* Estrutura, Linhas e Efeitos */
+  --sidebar-width: 240px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(255, 255, 255, 0.03); 
+  --radius: 16px;              /* Cantos mais arredondados e modernos */
+  --border-dark: #222226;      /* Linhas finas de alta definição */
+
+  /* Tipografia */
+  --font-main: "Lato", sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+}
+
+
+/* ==========================================================================
+PÁGINA DE DETALHES DO FILME (PREMIUM VIEW)
+========================================================================= */
+
+/* Contentor Geral que cobre o ecrã do Main */
 .det-page {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #121212;
     display: flex;
     align-items: center;
-    color: #ffffff;
-    font-family: sans-serif;
-    overflow: hidden;
-    background-color: #000;
+    box-sizing: border-box;
 }
 
-/* Imagem de fundo gigante */
+/* Fundo Gigante Desfocado (Cria a atmosfera do filme) */
 .det-backdrop {
     position: absolute;
     top: 0;
@@ -19,125 +60,169 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center top;
-    filter: blur(8px) brightness(0.4); /* Desfoca e escurece a imagem de fundo */
-    transform: scale(1.05); /* Evita bordas brancas causadas pelo blur */
+    background-position: center;
+    filter: blur(20px) scale(1.1); /* Desfoca e estica um pouco para não ver bordas brancas */
+    opacity: 0.35; /* Intensidade perfeita para não ofuscar o texto */
     z-index: 1;
 }
 
-/* Camada escura extra para garantir leitura do texto */
+/* Camada Escura de Fusão */
 .det-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.7) 100%);
     z-index: 2;
 }
 
-/* Alinhamento do conteúdo sobre o fundo */
+/* Caixa de Conteúdo Principal */
 .det-container {
     position: relative;
     z-index: 3;
     width: 100%;
-    padding: 60px;
-    box-sizing: border-box;
+    max-width: 800px; /* Alinhamento central elegante */
+    margin: 0 auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-.det-content {
-    max-width: 800px; /* Limita a largura apenas para o texto não esticar demasiado */
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-/* Botão Voltar */
+/* Botão Voltar (Estilo Floating Minimalista) */
 .det-btn-back {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #F5F5F5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
 }
 
 .det-btn-back:hover {
-    background: #e50914;
-    border-color: #e50914;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-4px); /* Animação subtil para a esquerda */
 }
 
-/* Elementos de Texto */
+/* Bloco de Conteúdo de Texto */
+.det-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Etiqueta de Categoria (Gênero) */
 .det-tag-category {
-    color: #ffcc00;
-    font-weight: bold;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #84cc16; /* O seu verde de destaque */
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    background: rgba(132, 204, 22, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
 }
 
+/* Título de Cinema Gigante */
 .det-main-title {
-    font-size: 4rem; /* Título gigante */
-    margin: 0 0 20px 0;
-    font-weight: 800;
+    font-size: 2.5rem; /* Destaque massivo */
+    font-weight: 900;
+    color: #FFFFFF;
     line-height: 1.1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Metadados (Ano e Preço) */
 .det-metadata {
     display: flex;
-    gap: 30px;
     align-items: center;
-    margin-bottom: 30px;
-    font-size: 1.2rem;
+    gap: 16px;
+    font-size: 0.9rem;
+    color: #A3A3A3;
+    font-weight: 700;
 }
 
-.det-release {
-    color: #cccccc;
+/* Divisória visual leve entre o ano e o preço */
+.det-release::after {
+    content: "•";
+    margin-left: 16px;
+    color: #3D3D3D;
 }
 
 .det-price-tag {
-    color: #ffcc00;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.det-full-desc {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    color: #e5e5e5;
-    margin-bottom: 40px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-/* Botão de Ação */
-.det-btn-buy {
-    background: #e50914;
-    color: white;
-    border: none;
-    padding: 16px 36px;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
     border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-flex;
+}
+
+/* Sinopse Completa Fluida */
+.det-full-desc {
+    font-size: 1rem;
+    color: #D6D6D6;
+    line-height: 1.6;
+    max-width: 650px; /* Limita a largura para tornar a leitura muito mais confortável */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Linha de Ação (Botões Inferiores) */
+.det-action-row {
+    margin-top: 12px;
+}
+
+/* Botão de Compra/Carrinho Principal */
+.det-btn-buy {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
-    transition: 0.3s;
+    gap: 10px;
+    background-color: #84cc16; /* O seu verde vibrante */
+    color: #121212;
+    border: none;
+    padding: 14px 28px; /* Botão maior e robusto para conversão */
+    border-radius: 30px; /* Formato pílula premium */
+    font-size: 0.95rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(132, 204, 22, 0.25);
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .det-btn-buy:hover {
-    background: #b80710;
+    background-color: #a3e635;
     transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(132, 204, 22, 0.4);
 }
+
+.det-btn-buy ion-icon {
+    font-size: 1.2rem;
+}
+
+/* Responsive Mobile Check */
+@media (max-width: 600px) {
+    .det-container {
+        padding: 16px;
+        gap: 16px;
+    }
+    .det-main-title {
+        font-size: 1.8rem;
+    }
+    .det-full-desc {
+        font-size: 0.9rem;
+    }
+}
+
+
 
 /* Animação de entrada */
 @keyframes fadeIn {
@@ -151,4 +236,496 @@
     .det-main-title { font-size: 2.5rem; }
     .det-overlay { background: rgba(0,0,0,0.8); } /* Fundo mais escuro no telemóvel */
 }
+
+/* Container Geral do Carrinho */
+.cart-container {
+    background-color: #171717;
+    color: #F5F5F5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px;
+    border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+}
+
+/* Cabeçalho Minimalista */
+.cart-header {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-header span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+}
+
+/* Linha do Produto Elegante */
+.cart-content {
+    display: grid;
+    grid-template-columns: 70px 1fr auto auto;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.03); /* Efeito translúcido leve */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efeito ao passar o rato no item */
+.cart-content:hover {
+    border-color: rgba(132, 204, 22, 0.3); /* Brilho suave com o seu verde #84cc16 */
+    transform: translateY(-2px);
+}
+
+/* Imagem de Filme com Proporção de Cinema */
+.cart-content img {
+    width: 70px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Bloco de Textos */
+.cart-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cart-info h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.3;
+}
+
+.cart-info .category {
+    font-size: 0.85rem;
+    color: #A3A3A3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cart-info .duration {
+    font-size: 0.8rem;
+    background-color: rgba(132, 204, 22, 0.15); /* Fundo verde translúcido */
+    color: #84cc16; /* O seu verde de destaque */
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    font-weight: 600;
+}
+
+/* Controlos de Quantidade Premium */
+.cart-controls {
+    display: flex;
+    align-items: center;
+    background: #262626;
+    padding: 4px;
+    border-radius: 30px; /* Cantos totalmente arredondados pill-style */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cart-controls button {
+    background: transparent;
+    color: #A3A3A3;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cart-controls button:hover {
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+}
+
+.cart-controls .quantity {
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Preço Destacado */
+.cart-price p {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.3px;
+}
+
+
+/* Ajuste no Pai para aceitar cartões mais pequenos (mudámos para 180px no minmax) */
+#listaFilmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  padding: 20px;
+  gap: 16px;
+  width: 100%;
+  list-style: none; /* Remove as bolinhas da lista UL */
+  margin: 0;
+}
+
+/* Estrutura Principal do Card Pequeno */
+.card-filme {
+    background-color: #262626; /* Tom cinza escuro da paleta */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-filme:hover {
+    transform: translateY(-4px);
+    border-color: #84cc16; /* O seu verde de destaque */
+}
+
+/* Cabeçalho do Card (Flex horizontal) */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.card-top .category {
+    font-size: 0.75rem;
+    color: #A3A3A3;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-saber-mais {
+    background: transparent;
+    border: none;
+    color: #84cc16;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-saber-mais:hover {
+    background: rgba(132, 204, 22, 0.1);
+}
+
+/* Imagem Proporcional Fixa */
+.card-media {
+    width: 100%;
+    height: 220px; /* Altura controlada para manter os cards pequenos */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Textos com limite de tamanho */
+.card-info h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #F5F5F5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta o título com "..." se for muito longo */
+}
+
+.card-info .desc {
+    font-size: 0.8rem;
+    color: #A3A3A3;
+    margin: 0 0 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita a descrição a apenas 2 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+/* Bloco de Preço e Ano */
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 8px;
+}
+
+.card-details .price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.card-details .year {
+    font-size: 0.75rem;
+    color: #737373;
+}
+
+/* Botão Adicionar ao Carrinho */
+.cartButton {
+    width: 100%;
+    background-color: #84cc16; /* Verde em destaque */
+    color: #171717;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cartButton:hover {
+    background-color: #65a30d; /* Verde ligeiramente mais escuro no hover */
+}
+
+
+/* Estrutura Principal do Hero Card */
+.movie-banner {
+    position: relative;
+    height: 380px;
+    border-radius:0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom:20px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #262626;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.movie-banner:hover {
+   /* transform: scale(1.03);*/
+    border-color: #84cc16;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* O Poster vira o Fundo Total */
+.movie-poster-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.movie-poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.movie-banner:hover .movie-poster-wrapper img {
+    transform: scale(1.1);
+}
+
+/* Efeito de sombreamento para leitura */
+.movie-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(23, 23, 23, 0.3) 0%, rgba(23, 23, 23, 0.85) 60%, #171717 100%);
+    z-index: 2;
+}
+
+/* Garante o posicionamento acima do fundo */
+.movie-header-tags, .movie-body-content, .movie-meta-data, .movie-action-footer {
+    position: relative;
+    z-index: 3;
+}
+
+/* Cabeçalho Flutuante */
+.movie-header-tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(23, 23, 23, 0.6);
+    padding: 6px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+
+.movie-genre {
+    font-size: 0.75rem;
+    color: #F5F5F5;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-view-details {
+    width:auto;
+    background: transparent;
+    border: none;
+    color: #84cc16;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Bloco de Textos */
+.movie-body-content {
+    margin-top: auto;
+}
+
+.movie-main-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 6px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.movie-synopsis {
+    font-size: 0.85rem;
+    color: #D6D6D6;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+/* Detalhes Finais */
+.movie-meta-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.movie-rental-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+
+.movie-release-year {
+    font-size: 0.8rem;
+    color: #A3A3A3;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Botão Verde de Destaque */
+.btn-add-to-rent {
+    width:auto;
+    background-color: #84cc16;
+    color: #171717;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(132, 204, 22, 0.3);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-add-to-rent:hover {
+    background-color: #a3e635;
+    transform: translateY(-1px);
+}
+
+.movie-action-footer{
+    width: 100%;
+
+
+
+
+
+}
+
+
+@media (max-width: 992px) {
+ .cart-container { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+ .sidebar { left: -100%; height: 600px;
+}
+ .sidebar.open { left: 0; }
+ .main-wrapper { margin-left: 0; }
+ .menu-toggle { display: block; }
+ .top-bar, .categories-bar { padding: 15px 20px; }
+ .search-box { max-width: 250px; }
+}
+/*
+/* ==========================================================================
+   HERO COMPONENT - FIXED SLIM DESIGN (ULTRA REFINED)
+   ========================================================================== */
+
+
+@media (min-width: 768px) {
+#app{
+    display:grid;
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: auto 500px 80px;
+    grid-template-areas:
+    "sidebar header header"
+    "sidebar main main"
+    "sidebar footer footer";
+}
+
+.sidebar {
+ background-color: var(--bg-white);
+ border-right: 1px solid rgba(0,0,0,0.05);
+ display: flex;
+ flex-direction: column;
+ justify-content:flex-start;
+ padding:  8px 8px; 
+ height: 100%;
+ transition: var(--transition);
+}
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+
+aside{
+  grid-area: sidebar;
+  display:flex;
+  background:#292524;
+}
+}
+
 
