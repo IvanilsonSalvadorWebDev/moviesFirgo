@@ -1,40 +1,24 @@
-export function adicionarAoCarrinho(filmes){
+export function criarCarrinho(){
 
-// Adicionar um evento ao botao
-// Receber o id o filme
-
-  const containerMovies = document.getElementById('listaFilmes');
+  let getStorage = localStorage.getItem('Carrinho');
+  
+  const containerMovies = document.getElementById('listaFilmes'); 
   
   const containerlistaFilmes = document.getElementById('addCart');
 
-  containerMovies.addEventListener('click', function(event){
-  
-  event.stopPropagation();
-  
+ containerMovies.addEventListener('storage', function(event){
+
   const button = event.target.closest("#cartButton");
 
   // Accessing your data-id attribute safely
   const buttonId = button.dataset.id; 
   
-  const filtroFilme = filmes.filter(filme => filme.id === Number(buttonId));
+  if (getStorage){
+  
+ // console.log(getStorage);
+ // console.log(getStorage);
 
-  //const getCart = JSON.parse(localStorage.getItem('Carrinho'));
-
-    // console.log(filtroFilme);
-
-  if(filtroFilme){
-
-   localStorage.setItem('Carrinho', JSON.stringify(filtroFilme));
-    
-   //console.log(localStorage.getItem('Carrinho', JSON.stringify(filtroFilme)));
-
-  let movieData = localStorage.getItem('Carrinho', JSON.stringify(filtroFilme));
-
-  let movieObject = JSON.parse(movieData);
-
-  console.log(movieObject);
-
-const mappingProducts = movieObject.map(function(filme){
+ const mappingProducts = getCart.map(function(filme){
   
     containerMovies.innerHTML += '';
 
@@ -67,9 +51,20 @@ const mappingProducts = movieObject.map(function(filme){
 </div>
     `;
   });
-  
-  }else{}
 
-  });
+});
+  }else{
+  
+ // console.log(getStorage);
+  //console.log(typeof cart);
 
 }
+
+}
+
+
+
+
+
+
+

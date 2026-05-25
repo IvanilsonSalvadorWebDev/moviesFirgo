@@ -9,7 +9,7 @@ export function listarFilmes(filmes){
     
           <li class='card'>
     <!-- Cabeçalho do Card: Categoria e Botão Saber Mais -->
-    <div class='card-top'>
+    <div id='card-top' class='card-top'>
         <span class='category'>${filme.category}</span>
         <button id='btn-saber-mais' class='btn-saber-mais' data-id='${filme.id}'>Saber Mais</button>
     </div>
@@ -32,7 +32,7 @@ export function listarFilmes(filmes){
     </div>
 
     <!-- Botão de Compra/Carrinho -->
-    <div class='card-action'>
+    <div id='card-action' class='card-action'>
         <button id='cartButton' class='cartButton' data-id='${filme.id}'>
             Adicionar ao Carrinho
         </button>

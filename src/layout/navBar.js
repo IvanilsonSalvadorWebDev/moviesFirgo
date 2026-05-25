@@ -16,7 +16,7 @@ export function navBar(){
                 </div>
                 <div class="user-status">
                     <ion-icon name="cart"></ion-icon> 
-                    <span class="cart-count">0</span>
+                    <span id='cart-count' class="cart-count">0</span>
                 </div>
             </div>
 

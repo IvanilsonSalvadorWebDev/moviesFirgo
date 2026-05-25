@@ -4,18 +4,19 @@ export function criarCarrinho(){
 
   if (getStorage){
   
-  console.log(getStorage);
+ // console.log(getStorage);
+ // console.log(getStorage);
 
   }else{
 
-  let cart = [];
+  let cart = '[]';
   
   const createCart = localStorage.setItem('Carrinho', cart);
   
-  console.log(getStorage);
+  //console.log(getStorage);
+ // console.log(typeof cart);
 
 }
-  return getStorage;
 
 }
 //verificar se no localStorage existe objecto carrinho

@@ -20,7 +20,7 @@ import {verDetalhesDeFilme} from './gestaoDeFilmes/verDetalhesDeFilme.js';
 //gestaoDeCarts
 import {adicionarAoCarrinho} from './gestaoDeCart/adicionarAoCarrinho.js';
 import {criarCarrinho} from './gestaoDeCart/criarCarrinho.js';
-
+import {atualizarCartIconNumber} from './gestaoDeCart/atualizarCartIconNumber.js';
 
 document.querySelector('#app').innerHTML = `
           <header>
@@ -57,7 +57,6 @@ document.querySelector('#app').innerHTML = `
     </button>
 </div>
 
-
             <div class="nav-items">
                     <div id="btn-logout" class="nav-item" style="margin-top: auto; color: #ff4444;">
                         <i class="fas fa-sign-out-alt"></i>
@@ -66,14 +65,13 @@ document.querySelector('#app').innerHTML = `
                 </div>
         </aside>
 
-<main id='main'>
-   ${hero(filmes)}
+   <main id='main'>
+      ${hero(filmes)}
 
+      <div id='listaFilmes'>
+      </div>
 
-    <div id='listaFilmes'>
-    </div>
-
-</main>
+   </main>
 
    <footer>
    
@@ -96,5 +94,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //
     criarCarrinho();
     adicionarAoCarrinho(filmes);
+    atualizarCartIconNumber();
     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });

@@ -6,8 +6,6 @@ export function filtrarFilmes(filmes){
 
   const containerTabs = document.createElement('div');
 
-  console.log(containerTabs);
-
   //document.tabs.appendChild(containerTabs);
 
   const filtro = filmes.filter(filme => filme.category);

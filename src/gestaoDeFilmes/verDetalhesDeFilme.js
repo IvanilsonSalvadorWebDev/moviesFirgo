@@ -2,14 +2,14 @@ export function verDetalhesDeFilme(filmes){
 
   const containerSaberMais = document.getElementById('listaFilmes'); 
 
-    let movieBanner = document.getElementById('movie-banner');
+  let movieBanner = document.getElementById('movie-banner');
 
-  
   const containerlistaFilmes = document.getElementById('main');
 
   containerSaberMais.addEventListener('click', function(event){
-    
-    movieBanner.style.display='none';
+      event.stopPropagation();
+
+  movieBanner.style.display='none';
 
   const card = event.target.closest('#btn-saber-mais');
 
@@ -27,10 +27,10 @@ export function verDetalhesDeFilme(filmes){
 
   containerlistaFilmes.innerHTML =`
   
-            <div class="det-page" data-id="${filme.id}">
-    <!-- Fundo gigante com desfoque -->
-    <div class="det-backdrop" style="background-image: url('${filme.image}');"></div>
-    <div class="det-overlay"></div>
+    <div class="det-page" data-id="${filme.id}">
+      <!-- Fundo gigante com desfoque -->
+      <div class="det-backdrop" style="background-image: url('${filme.image}');"></div>
+      <div class="det-overlay"></div>
 
     <!-- Conteúdo posicionado por cima do fundo -->
     <div class="det-container">
