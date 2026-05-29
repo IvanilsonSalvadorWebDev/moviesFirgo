@@ -1,7 +1,8 @@
 export function ordenarFilmes(filmes){
 
   const select = document.getElementById('selectOrder');
-
+  let listaFilmes = document.getElementById('listaFilmes');
+  const container = document.getElementById('listaFilmes');
   select.addEventListener('change', function(event){
 
   const movieId  = event.target.value;
@@ -10,15 +11,16 @@ export function ordenarFilmes(filmes){
   console.log(movieId);
 
   if(movieId === 'A-Z'){
-    
-    const sortFilmes = [...filmes].sort((a,b) => a.title.localeCompare(b.title, undefined, {sensitivity:'base'}));
-    
-    const mapTitulos = sortFilmes.map(function(filme){
-    
-    const container = document.getElementById('listaFilmes');
+        container.innerHTML = '';
 
-         container.innerHTML += '';
+    const sortFilmes = [...filmes].reverse((a,b) => a.title.localeCompare(b.title, undefined, {sensitivity:'base'}));
 
+    const newSort = sortFilmes;
+    
+    if(newSort){
+    
+    const mapTitulos = newSort.map(function(filme){
+    container.innerHTML += '';
          container.innerHTML += `
     
             <li class='card'>
@@ -55,14 +57,19 @@ export function ordenarFilmes(filmes){
         `;
     });
 
-  } else if (movieId === 'Z-A'){
-    
-    const sortFilmes = filmes.sort((a,b) => b.title.localeCompare(a.title));
-    
-    const mapTitulos = sortFilmes.map(function(filme){
-    
-    const container = document.getElementById('listaFilmes');
+    }else{
+    }
 
+  } else if (movieId === 'Z-A'){
+  
+        container.innerHTML += '';
+
+    const sortFilmes = filmes.sort((a,b) => b.title.localeCompare(a.title));
+
+    const newSort = sortFilmes;
+    
+    const mapTitulos = newSort.map(function(filme){
+    
          container.innerHTML += '';
 
          container.innerHTML += `

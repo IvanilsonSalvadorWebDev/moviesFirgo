@@ -21,79 +21,74 @@ import {verDetalhesDeFilme} from './gestaoDeFilmes/verDetalhesDeFilme.js';
 import {adicionarAoCarrinho} from './gestaoDeCart/adicionarAoCarrinho.js';
 import {criarCarrinho} from './gestaoDeCart/criarCarrinho.js';
 import {atualizarCartIconNumber} from './gestaoDeCart/atualizarCartIconNumber.js';
+import {listaItensDoCarrinho} from './gestaoDeCart/listaItensDoCarrinho.js';
 
+import {alternarPages} from './gestaoDeViews/alternarPages.js';
+import {aumentarQtdOffCartItem} from './gestaoDeCart/controllersCart/aumentarQtd.js';
+
+
+// 1. Injeta o HTML na estrutura
 document.querySelector('#app').innerHTML = `
-          <header>
-            ${navBar()}
-          </header>
+    <header>
+    ${navBar()}
+    </header>
 
-   <aside id="sidebar" class="sidebar">
-            <div class="logo">
-              <h2>Firgos</h2>
+    <aside id="sidebar" class="sidebar">
+        <div class="logo">
+            <h2>Firgos</h2>
+        </div>
+        <div id='sidebarLinks'>
+            <button id='sidebarLink' class="nav-item active" data-page="home">
+                  <ion-icon name="home"></ion-icon> <span>Home</span>
+                  </button>
+            <button id='sidebarLink' class="nav-item" data-page="meus-filmes">
+            <ion-icon name="film-outline"></ion-icon> <span>Meus Filmes</span>
+            </button>
+            <button id='sidebarLink' class="nav-item" data-page="carrinho">
+            <ion-icon name="cart"></ion-icon> <span>Carrinho</span>
+            </button>
+            <button id='sidebarLink' class="nav-item" data-page="historico">
+            <ion-icon name="time-outline"></ion-icon> <span>Histórico</span>
+            </button>
+            <hr>
+            <button id='sidebarLink' class="nav-item" data-page="perfil">
+            <ion-icon name="person-circle-outline"></ion-icon> <span>Minha Conta</span>
+            </button>
+        </div>
+        <div class="nav-items">
+            <div id="btn-logout" class="nav-item" style="margin-top: auto; color: #ff4444;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
             </div>
-    <div>
-    <!-- Página ativa: Ícone Preenchido (Sem o sufixo -outline) -->
-    <button class="nav-item active" data-page="home">
-        <ion-icon name="home"></ion-icon> <span>Home</span>
-    </button>
-    
-    <!-- Restantes páginas: Ícones de Contorno (Com o sufixo -outline) -->
-    <button class="nav-item" data-page="meus-filmes">
-        <ion-icon name="film-outline"></ion-icon> <span>Meus Filmes</span>
-    </button>
-    
-    <button class="nav-item" data-page="carrinho">
-        <ion-icon name="cart"></ion-icon> <span>Carrinho</span>
-    </button>
-    
-    <button class="nav-item" data-page="historico">
-        <ion-icon name="time-outline"></ion-icon> <span>Histórico</span>
-    </button>
-    
-    <hr>
-    
-    <button class="nav-item" data-page="perfil">
-        <ion-icon name="person-circle-outline"></ion-icon> <span>Minha Conta</span>
-    </button>
+        </div>
+    </aside>
+
+    <main id='main'>
+        ${hero(filmes)}
+        <div id='listaFilmes'></div>
 </div>
 
-            <div class="nav-items">
-                    <div id="btn-logout" class="nav-item" style="margin-top: auto; color: #ff4444;">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </div>
-                </div>
-        </aside>
+    </main>
 
-   <main id='main'>
-      ${hero(filmes)}
+    <footer></footer>
+`;
 
-      <div id='listaFilmes'>
-      </div>
+// 2. Executa a lógica de imediato (Sem o DOMContentLoaded)
+listarFilmes(filmes);
+listarCategorias(filmes);
+filtrarFilmes(filmes);
+alternarCategorias(filmes);
+ordenarFilmes(filmes);
+pesquisarFilmes(filmes);
+filtrarFilmesPor(filmes);
+pesquisarFilmesPorDate(filmes);
+pesquisarFilmesPorPrice(filmes);
+verDetalhesDeFilme(filmes);
 
-   </main>
+criarCarrinho();
+adicionarAoCarrinho(filmes);
+atualizarCartIconNumber();
+listaItensDoCarrinho();
+alternarPages();
+aumentarQtdOffCartItem();
 
-   <footer>
-   
-   </footer>
-   
-`
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    listarFilmes(filmes);
-    listarCategorias(filmes);
-    filtrarFilmes(filmes);
-    alternarCategorias(filmes);
-    ordenarFilmes(filmes);
-    pesquisarFilmes(filmes);
-    filtrarFilmesPor(filmes);
-    pesquisarFilmesPorDate(filmes);
-    pesquisarFilmesPorPrice(filmes);
-    verDetalhesDeFilme(filmes);
-
-    //
-    criarCarrinho();
-    adicionarAoCarrinho(filmes);
-    atualizarCartIconNumber();
-    
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   });

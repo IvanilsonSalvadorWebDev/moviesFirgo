@@ -14,8 +14,8 @@ export function navBar(){
                         <option value ='price'>Preço: </option>
                     </select>
                 </div>
-                <div class="user-status">
-                    <ion-icon name="cart"></ion-icon> 
+                <div id='user-status' class="user-status">
+                    <ion-icon id='iconCart' name="cart"></ion-icon> 
                     <span id='cart-count' class="cart-count">0</span>
                 </div>
             </div>
@@ -24,9 +24,9 @@ export function navBar(){
                   <div id='categories-item'></div>
                     <div>
                     <select id='selectOrder' class='select'>
-                        <option value ='A-Z'>Maior</option>
-                        <option value ='Z-A'>Menor</option>
-                        <option value =''></option>
+                        <option value ='A-Z'>A-Z</option>
+                        <option value ='Z-A'>Z-A</option>
+                        <option value =''>Default</option>
                     </select>
                         <button class="cat button" data-genre="all">Filtrar</button>
                     </div>

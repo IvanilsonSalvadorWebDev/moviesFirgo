@@ -1,7 +1,6 @@
 export function hero(filmes){
 
 return`
-
 <li id='movie-banner' class='movie-banner'>
     <!-- Topo: Gênero e Acesso aos Detalhes -->
     <div class='movie-header-tags'>
@@ -34,6 +33,5 @@ return`
         </button>
     </div>
 </li>
-
 `
 }

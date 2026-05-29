@@ -7,7 +7,8 @@ export function verDetalhesDeFilme(filmes){
   const containerlistaFilmes = document.getElementById('main');
 
   containerSaberMais.addEventListener('click', function(event){
-      event.stopPropagation();
+ 
+  event.stopPropagation();
 
   movieBanner.style.display='none';
 

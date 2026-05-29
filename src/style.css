@@ -41,7 +41,8 @@ hr {
 
 header {
     grid-area: header;
-    background: #161616; /* Removido o amarelo/castanho para um look dark premium */
+    background: #161616;
+     /* Removido o amarelo/castanho para um look dark premium */
     border-bottom: 1px solid #2A2A2A;
 }
 
@@ -162,6 +163,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     width: 100%;
+    focus:none;
     padding: 0; /* Zerado para não colidir com o padding do main */
     list-style: none;
 }

@@ -10,7 +10,7 @@ if(getCartItens){
 
   cartIcon.textContent = mappingNumber;
 
-  console.log(mappingNumber);
+ // console.log(mappingNumber);
 
 }else {
 

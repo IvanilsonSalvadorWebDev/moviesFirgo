@@ -1,75 +1,49 @@
 export function adicionarAoCarrinho(filmes){
 
-// Adicionar um evento ao botao
-// Receber o id o filme
-
   const containerMovies = document.getElementById('listaFilmes');
-  
-  const containerlistaFilmes = document.getElementById('addCart');
+  const containerlistaFilmes = document.getElementById('addCart'); // Use isto para atualizar a tela
+  const containerDuration = document.getElementById('duration');
 
-  containerMovies.addEventListener('click', function(event){
-  
-  event.stopPropagation();
-  
+containerMovies.addEventListener('click', function(event) {
+event.stopPropagation(); 
+
   const button = event.target.closest("#cartButton");
+  
+  if (!button) return; 
 
-  // Accessing your data-id attribute safely
   const buttonId = button.dataset.id; 
+
+  const filme = filmes.find(filme => filme.id === Number(buttonId));
   
-  const filtroFilme = filmes.filter(filme => filme.id === Number(buttonId));
+  if (!filme) return;
 
-  //const getCart = JSON.parse(localStorage.getItem('Carrinho'));
+  const listaAtual = JSON.parse(localStorage.getItem('Carrinho')) || [];
 
-    // console.log(filtroFilme);
+  const filmeExistente = listaAtual.find(item => item.id === filme.id);
 
-  if(filtroFilme){
+  if (filmeExistente) {
+  
+    let containerDuration = document.getElementById('duration');
 
-   localStorage.setItem('Carrinho', JSON.stringify(filtroFilme));
+    let incrementarQtd = filmeExistente.qtd += 1 ;
+
+    containerDuration.innerHTML += incrementarQtd;
     
-   //console.log(localStorage.getItem('Carrinho', JSON.stringify(filtroFilme)));
+    console.log(filmeExistente);
+  } else {
+    // Se é novo, adiciona ao carrinho com quantidade 1
+    listaAtual.push({ ...filme, qtd: 1 });
+  }
 
-  let movieData = localStorage.getItem('Carrinho', JSON.stringify(filtroFilme));
-
-  let movieObject = JSON.parse(movieData);
-
-  console.log(movieObject);
-
-const mappingProducts = movieObject.map(function(filme){
+  // 5. Salva no localStorage
+  localStorage.setItem('Carrinho', JSON.stringify(listaAtual));
   
-    containerMovies.innerHTML += '';
+  console.log(listaAtual);
 
-    containerMovies.innerHTML = `
-    
-    <div class='cart-container'>
-    <div class='cart-header'>
-        <span>Your Cart</span>
-    </div>
-
-    <div class='cart-content'>
-        <img src='${filme.image}' alt='${filme.title}'>
-
-        <div class='cart-info'>
-            <h3>${filme.title}</h3>
-            <span class='category'>${filme.category}</span>
-            <span class='duration'>1 dia</span>
-        </div>
-
-        <div class='cart-controls'>
-            <button class='btn-minus'>-</button>
-            <span class='quantity'>1</span>
-            <button class='btn-plus'>+</button>
-        </div>
-
-        <div class='cart-price'>
-            <p>${filme.price} Kz</p>
-        </div>
-    </div>
-</div>
-    `;
-  });
+  // 6. O QUE FALTA: Chamar uma função para desenhar o carrinho no HTML
+  // atualizarInterfaceCarrinho(); 
   
-  }else{}
+});
 
-  });
 
 }
